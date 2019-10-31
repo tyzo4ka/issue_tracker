@@ -1,11 +1,15 @@
+from pyexpat.errors import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.auth.models import User
+from django.db import transaction
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.views import View
 from django.views.generic import DetailView, UpdateView, ListView
 
-from .forms import UserCreationForm, UserChangeForm, PasswordChangeForm
+from .forms import UserCreationForm, UserChangeForm, PasswordChangeForm, ProfileForm
 
 
 def login_view(request):
@@ -50,7 +54,7 @@ def register_view(request):
 class UserDetailView(DetailView):
     model = User
     template_name = "user_detail.html"
-    context_object_name = "user_obj"
+    context_object_name = "user"
 
 
 class UserPersonalInfoChangeView(UserPassesTestMixin, UpdateView):
@@ -64,6 +68,30 @@ class UserPersonalInfoChangeView(UserPassesTestMixin, UpdateView):
 
     def get_success_url(self):
         return reverse('accounts:detail', kwargs={'pk': self.object.pk})
+
+
+@login_required
+@transaction.atomic
+def update_profile(request, pk):
+    user = User.objects.get(pk=pk)
+    user.profile.git_profile = 'https://github.com/'
+    user.save()
+    if request.method == 'POST':
+        user_form = UserChangeForm(request.POST, instance=request.user)
+        profile_form = ProfileForm(request.POST, instance=request.user.profile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            return redirect('accounts:detail', pk=pk)
+        else:
+            messages.error(request, _('Please correct the error below.'))
+    else:
+        user_form = UserChangeForm(instance=request.user)
+        profile_form = ProfileForm(instance=request.user.profile)
+    return render(request, 'user_update.html', {
+        'user_form': user_form,
+        'profile_form': profile_form
+    })
 
 
 class UserPasswordChangeView(UserPassesTestMixin, UpdateView):
@@ -87,11 +115,3 @@ class AllUsersView(ListView):
 
     def get_queryset(self):
         return User.objects.all().order_by("username")
-
-
-
-
-
-
-
-

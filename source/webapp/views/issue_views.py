@@ -44,7 +44,7 @@ class IssueUpdateView(LoginRequiredMixin, UpdateView):
         return reverse("webapp:issue_view", kwargs={"pk": self.object.pk})
 
 
-class IssueDeleteView(DeleteView):
+class IssueDeleteView(LoginRequiredMixin, DeleteView):
     form_class = IssueForm
     template_name = "issue/delete.html"
     model = Issue

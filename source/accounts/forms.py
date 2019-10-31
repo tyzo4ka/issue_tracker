@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from .models import Profile
 from django import forms
 from django.core.exceptions import ValidationError
 
@@ -69,7 +70,6 @@ class PasswordChangeForm(forms.ModelForm):
         if password and password_confirm and password != password_confirm:
             raise forms.ValidationError("Passwords do not match", code='passwords_do_not_match')
 
-
     def save(self, commit=True):
         user = self.instance
         user.set_password(self.cleaned_data.get('password'))
@@ -81,3 +81,9 @@ class PasswordChangeForm(forms.ModelForm):
         model = User
         fields = ['password', 'password_confirm', 'old_password']
 
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['git_profile']
+        labels = {"git_profile": "Git profile"}
