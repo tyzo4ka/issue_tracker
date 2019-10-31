@@ -11,6 +11,16 @@ class UserCreationForm(forms.ModelForm):
                                        widget=forms.PasswordInput)
     email = forms.EmailField(label='Email', required=True)
 
+    def save(self, commit=True):
+        user = super().save(commit=commit)
+        self.save_profile(user)
+        return user
+
+    def save_profile(self, user):
+        profile = Profile.objects.get_or_create(user=user)
+        profile.git_profile = self.cleaned_data["git_profile", None]
+        profile.save()
+
     def clean_username(self):
         username = self.cleaned_data.get('username')
         try:

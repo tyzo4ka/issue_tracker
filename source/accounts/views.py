@@ -76,6 +76,7 @@ def update_profile(request, pk):
     user = User.objects.get(pk=pk)
     user.profile.git_profile = 'https://github.com/'
     user.save()
+    user.profile.save()
     if request.method == 'POST':
         user_form = UserChangeForm(request.POST, instance=request.user)
         profile_form = ProfileForm(request.POST, instance=request.user.profile)
