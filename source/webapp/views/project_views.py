@@ -112,3 +112,11 @@ class ProjectDeleteView(LoginRequiredMixin, DeleteView):
         return HttpResponseRedirect(success_url)
 
 
+class ProjectDeleteUser(LoginRequiredMixin, DeleteView):
+    model = Team
+    template_name = "project/delete_user.html"
+    context_object_name = "team"
+
+    def get_success_url(self):
+        return reverse("webapp:project_view", kwargs={"pk": self.object.project.pk})
+

@@ -27,5 +27,5 @@ class Team(models.Model):
     end_date = models.DateTimeField(verbose_name="End date", null=True, blank=True)
 
     def __str__(self):
-        return str(self.user)
+        return str(self.user.username)
 

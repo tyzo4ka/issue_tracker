@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Delete User{% endblock %}
+{% block content %}
+    <h1>Are you sure want to delete user "{{ team }}"?</h1>
+    <form method="POST" action="{% url "webapp:delete_user_from_team" team.pk %}" class="text-center">
+        {% csrf_token %}
+        <p><input type="submit" value="Confirm" class="btn btn-danger"></p>
+        <p><a href="{% url 'webapp:project_view' team.project.pk %}" class="btn btn-default">Cancel</a></p>
+    </form>
+{% endblock %}

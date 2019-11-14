@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from webapp.views import IndexView, IssueView, IssueUpdateView, IssueCreateView, IssueDeleteView, StatusView, \
     TypeView, StatusCreateView, TypeCreateView, StatusUpdateView, TypeUpdateView, TypeDeleteView, StatusDeleteView,\
-    ProjectView, ProjectCreateView, ProjectUpdateView, ProjectDeleteView, ProjectDetailView
+    ProjectView, ProjectCreateView, ProjectUpdateView, ProjectDeleteView, ProjectDetailView, ProjectDeleteUser
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,7 +25,8 @@ urlpatterns = [
     path("projects/<int:pk>", ProjectDetailView.as_view(), name="project_view"),
     path("projects/add", ProjectCreateView.as_view(), name="project_add"),
     path("projects/<int:pk>/edit/", ProjectUpdateView.as_view(), name="project_update"),
-    path("projects/<int:pk>/delete/", ProjectDeleteView.as_view(), name="project_delete")
+    path("projects/<int:pk>/delete/", ProjectDeleteView.as_view(), name="project_delete"),
+    path("teams/<int:pk>/delete/", ProjectDeleteUser.as_view(), name="delete_user_from_team")
 ]
 
 app_name = "webapp"

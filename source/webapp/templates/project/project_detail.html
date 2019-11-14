@@ -23,7 +23,7 @@
     <h3>Users:</h3>
        {% for team in teams %}
            <p>{{ team.user.username.capitalize }}, start working on the project {{ team.start_date|date:'d.m.Y H:i:s' }}
-           <a href="#">delete</a></p>
+           <a href="{% url "webapp:delete_user_from_team" team.pk %}">delete</a></p>
         {% endfor %}
     <br>
 
