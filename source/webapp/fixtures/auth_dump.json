@@ -1,20 +1,61 @@
 [
 {
-  "model": "auth.user",
+  "model": "auth.group",
   "pk": 1,
   "fields": {
-    "password": "pbkdf2_sha256$150000$1FxmkVYY4wIX$Q0/kaO7v2ZgczLwZzHI/6SfNM3Y3TE8Py2K1TqgGoRU=",
-    "last_login": "2019-10-26T05:29:15.616Z",
-    "is_superuser": true,
-    "username": "admin",
-    "first_name": "",
-    "last_name": "",
-    "email": "",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2019-09-23T14:11:41.158Z",
-    "groups": [],
-    "user_permissions": []
+    "name": "Project Manager",
+    "permissions": [
+      49,
+      50,
+      51,
+      52,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 2,
+  "fields": {
+    "name": "Team Lead",
+    "permissions": [
+      49,
+      50,
+      51,
+      52,
+      33,
+      34,
+      35,
+      36,
+      40,
+      44,
+      28,
+      32
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 3,
+  "fields": {
+    "name": "Developer",
+    "permissions": [
+      52,
+      33,
+      34,
+      36,
+      40,
+      44,
+      28,
+      32
+    ]
   }
 },
 {
@@ -68,6 +109,120 @@
     "is_active": true,
     "date_joined": "2019-10-26T06:53:23.108Z",
     "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$bd35HqcsadUC$weuxmxBoQrP9KNJA+oVPAqVW6Z9pgcvk9UAz8Z1oh/M=",
+    "last_login": "2019-10-31T14:31:48.140Z",
+    "is_superuser": false,
+    "username": "user1",
+    "first_name": "User",
+    "last_name": "User1",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-10-31T09:01:42Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$tqCKfREpKvBh$x3zXHN4ezP75t3Du9gAj+chfdkw0y3HqvOSHF6SgpG4=",
+    "last_login": "2019-10-31T09:54:56.349Z",
+    "is_superuser": true,
+    "username": "adm",
+    "first_name": "a",
+    "last_name": "a",
+    "email": "a@mail.ru",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2019-10-31T09:54:42.782Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$Ptp1AXk6UQuy$tBBPucdMWfj3HN6W4QSb7AZqOYmffoRl66kuublNjnw=",
+    "last_login": "2019-11-14T08:26:26.800Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "Admin",
+    "last_name": "Adm",
+    "email": "admin@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2019-10-31T09:56:11Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$qa9DSMIwp1R7$x1p2bK6sH7o7aC3LM0UTo0D7CkCwfpJdyJVjDTRi0ak=",
+    "last_login": "2019-10-31T14:22:46Z",
+    "is_superuser": false,
+    "username": "user2",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-10-31T13:08:33Z",
+    "groups": [
+      3
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$Fjg50BY0jnaP$/i7w7KpyVABzRQj/eZhNR258b154wusByDaHzv+ar3I=",
+    "last_login": "2019-10-31T14:16:28Z",
+    "is_superuser": false,
+    "username": "user3",
+    "first_name": "Aleksandra",
+    "last_name": "",
+    "email": "alex@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-10-31T14:16:27Z",
+    "groups": [
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 10,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$Qu1BwRzdzo07$SwaeNl11EmtgT9XFkmCWXYcQoeybglWLDWxJvRo9UUU=",
+    "last_login": "2019-11-14T08:32:27.304Z",
+    "is_superuser": false,
+    "username": "me",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-11-07T10:17:43Z",
+    "groups": [
+      1
+    ],
     "user_permissions": []
   }
 }

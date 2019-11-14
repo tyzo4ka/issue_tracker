@@ -4,13 +4,13 @@
 
 {% block menu %}
     <li><a href="{% url 'webapp:all_projects' %}">All projects</a></li>
-    {% if request.user.is_authenticated %}
-                <li><a href="{% url 'webapp:project_add' %}">Add project</a></li>
-        <li><a href="#">Delete Project</a></li>
-       <li><a href="#">??</a></li>
-       <li><a href="#">Add users to project</a></li>
-       <li><a href="#">Delete users to project</a></li>
-            {% endif %}
+    {% if perms.webapp.add_project %}
+            <li><a href="{% url 'webapp:project_add' %}">Add project</a></li>
+    {% endif %}
+    {% if perms.webapp.change_project %}
+            <li><a href="{% url 'webapp:project_update' project.pk %}">Update project</a></li>
+    {% endif %}
+
 {% endblock %}
 
 {% block content %}
@@ -22,9 +22,11 @@
 
     <h3>Users:</h3>
        {% for team in teams %}
-           <p>{{ team.user.username.capitalize }}, start working on the project {{ team.start_date|date:'d.m.Y H:i:s' }}
-           <a href="{% url "webapp:delete_user_from_team" team.pk %}">delete</a></p>
-        {% endfor %}
+           <p>{{ team.user.username.capitalize }}, started working on the project {{ team.start_date|date:'d.m.Y H:i:s' }}
+           {% if perms.webapp.delete_team %}
+               <a href="{% url "webapp:delete_user_from_team" team.pk %}">delete</a></p>
+           {% endif %}
+       {% endfor %}
     <br>
 
     <h3>Issues:</h3>

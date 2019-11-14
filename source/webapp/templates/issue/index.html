@@ -2,11 +2,13 @@
 
 {% block menu %}
     {% if request.user.is_authenticated %}
-        <li><a href="{% url 'webapp:issue_add' %}">Add Issue</a></li>
         <li><a href="{% url 'webapp:all_statuses' %}">Statuses</a></li>
         <li><a href="{% url 'webapp:all_types' %}">Types</a></li>
         <li><a href="{% url 'webapp:all_projects' %}">Projects</a></li>
-            {% endif %}
+        {% if perms.webapp.change_project %}
+            <li><a href="{% url 'webapp:issue_add' %}">Add Issue</a></li>
+        {% endif %}
+    {% endif %}
 {% endblock %}
 
 {% block content %}
@@ -24,9 +26,13 @@
             <p>Created at {{ issue.created_date|date:'d.m.Y H:i:s' }}</p>
             <p>Created by: {{ issue.created_by }}</p>
             {% if request.user.is_authenticated %}
-                    <a href="{% url 'webapp:issue_view' issue.pk %}">More</a>
+                <a href="{% url 'webapp:issue_view' issue.pk %}">More</a>
+                {% if perms.webapp.change_issue %}
                     <a href="{% url 'webapp:issue_update' issue.pk %}">Edit</a>
+                {% endif %}
+                {% if perms.webapp.delete_issue %}
                     <a href="{% url "webapp:issue_delete" issue.pk %}">Delete</a>
+                {% endif %}
             {% endif %}
             </p>
             <hr/>

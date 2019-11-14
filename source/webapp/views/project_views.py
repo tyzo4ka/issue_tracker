@@ -1,5 +1,5 @@
 from datetime import datetime
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
 from accounts.models import Team
@@ -51,10 +51,12 @@ class ProjectDetailView(DetailView):
         context['is_paginated'] = page.has_other_pages()
 
 
-class ProjectCreateView(LoginRequiredMixin, CreateView):
+class ProjectCreateView(PermissionRequiredMixin, CreateView):
     model = Project
     template_name = "project/create_project.html"
     form_class = ProjectForm
+    permission_required = 'webapp.add_project'
+    permission_denied_message = "Access denied"
 
     def form_valid(self, form):
         users = form.cleaned_data.pop('users')
@@ -76,11 +78,13 @@ class ProjectCreateView(LoginRequiredMixin, CreateView):
         return reverse("webapp:project_view", kwargs={"pk": self.object.pk})
 
 
-class ProjectUpdateView(LoginRequiredMixin, UpdateView):
+class ProjectUpdateView(PermissionRequiredMixin, UpdateView):
     model = Project
     form_class = ProjectForm
     template_name = "project/update_project.html"
     context_object_name = "project"
+    permission_required = 'webapp.change_project'
+    permission_denied_message = "Access denied"
 
     def form_valid(self, form):
         users = form.cleaned_data.pop('users')
@@ -95,38 +99,38 @@ class ProjectUpdateView(LoginRequiredMixin, UpdateView):
         return reverse("webapp:project_view", kwargs={"pk": self.object.pk})
 
 
-class ProjectDeleteView(LoginRequiredMixin, DeleteView):
+class ProjectDeleteView(PermissionRequiredMixin, DeleteView):
     form_class = ProjectForm
     template_name = "project/delete_project.html"
     model = Project
     success_url = reverse_lazy("webapp:all_projects")
     context_object_name = "project"
+    permission_required = 'webapp.delete_project'
+    permission_denied_message = "Access denied"
 
-    def delete(self, request, *args, **kwargs):
-        self.object = self.get_object()
-        form = self.form_class(data=request.POST)
-        success_url = self.get_success_url()
-        self.object.status.pk = 2
-        self.object.save()
+    # def delete(self, request, *args, **kwargs):
+    #     self.object = self.get_object()
+    #     form = self.form_class(data=request.POST)
+    #     success_url = self.get_success_url()
+    #     self.object.status.pk = 2
+    #     self.object.save()
+    #
+    #     return HttpResponseRedirect(success_url)
 
-        return HttpResponseRedirect(success_url)
 
-
-class ProjectDeleteUser(LoginRequiredMixin, DeleteView):
+class ProjectDeleteUser(PermissionRequiredMixin, DeleteView):
     model = Team
     template_name = "project/delete_user.html"
     context_object_name = "team"
+    permission_required = 'webapp.delete_team'
+    permission_denied_message = "Access denied"
 
     def get(self, request, *args, **kwargs):
-        print(request.user.pk)
         project_pk = self.kwargs.get('pk')
-        print(project_pk)
         project = Team.objects.get(pk=project_pk)
-        print(project.user.pk)
         if project.user.pk == request.user.pk:
             return HttpResponseForbidden("Can't delete yourself from project")
         return super().get(self.request)
-
 
     def get_success_url(self):
         return reverse("webapp:project_view", kwargs={"pk": self.object.project.pk})

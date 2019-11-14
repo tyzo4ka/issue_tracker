@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin, PermissionRequiredMixin
 from django.http import HttpResponseForbidden
 from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
@@ -40,10 +40,12 @@ class UserPassesCheck(View):
             return user_name == user.user
 
 
-class IssueCreateView(UserPassesCheck, CreateView):
+class IssueCreateView(PermissionRequiredMixin, UserPassesCheck, CreateView):
     model = Issue
     template_name = "issue/create.html"
     form_class = IssueForm
+    permission_required = 'webapp.add_issue'
+    permission_denied_message = "Access denied"
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
@@ -63,11 +65,13 @@ class IssueCreateView(UserPassesCheck, CreateView):
         return reverse("webapp:issue_view", kwargs={"pk": self.object.pk})
 
 
-class IssueUpdateView(UserPassesCheck, UpdateView):
+class IssueUpdateView(PermissionRequiredMixin, UserPassesCheck, UpdateView):
     model = Issue
     form_class = IssueForm
     template_name = "issue/update.html"
     context_object_name = "issue"
+    permission_required = 'webapp.change_issue'
+    permission_denied_message = "Access denied"
 
     def get(self, *args, **kwargs):
         project_pk = self.get_object().project.pk
@@ -80,12 +84,14 @@ class IssueUpdateView(UserPassesCheck, UpdateView):
         return reverse("webapp:issue_view", kwargs={"pk": self.object.pk})
 
 
-class IssueDeleteView(UserPassesCheck, DeleteView):
+class IssueDeleteView(PermissionRequiredMixin, UserPassesCheck, DeleteView):
     form_class = IssueForm
     template_name = "issue/delete.html"
     model = Issue
     success_url = reverse_lazy("webapp:index")
     context_object_name = "issue"
+    permission_required = 'webapp.delete_issue'
+    permission_denied_message = "Access denied"
 
     def get(self, *args, **kwargs):
         project_pk = self.get_object().project.pk
