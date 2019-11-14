@@ -8,7 +8,7 @@ from webapp.models import Project, User
 from django.db.models import Q
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.core.paginator import Paginator
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponseForbidden
 from .base import SearchView
 
 
@@ -116,6 +116,17 @@ class ProjectDeleteUser(LoginRequiredMixin, DeleteView):
     model = Team
     template_name = "project/delete_user.html"
     context_object_name = "team"
+
+    def get(self, request, *args, **kwargs):
+        print(request.user.pk)
+        project_pk = self.kwargs.get('pk')
+        print(project_pk)
+        project = Team.objects.get(pk=project_pk)
+        print(project.user.pk)
+        if project.user.pk == request.user.pk:
+            return HttpResponseForbidden("Can't delete yourself from project")
+        return super().get(self.request)
+
 
     def get_success_url(self):
         return reverse("webapp:project_view", kwargs={"pk": self.object.project.pk})
