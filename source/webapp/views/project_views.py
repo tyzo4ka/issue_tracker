@@ -129,14 +129,10 @@ class ProjectDeleteUser(PermissionRequiredMixin, DeleteView):
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
         success_url = self.get_success_url()
-        print(self.object)
         end_date = datetime.now()
         team = self.object
-        print("End date", team.end_date)
         team.end_date = end_date
         team.save()
-        print("End date", team.end_date)
-
         return HttpResponseRedirect(success_url)
 
     def user_delete_check(self, request, *args, **kwargs):
@@ -149,11 +145,6 @@ class ProjectDeleteUser(PermissionRequiredMixin, DeleteView):
             return HttpResponseForbidden("Can't delete yourself from project")
         else:
             return super().get(self.request)
-        # project_pk = self.kwargs.get('pk')
-        # project = Team.objects.get(pk=project_pk)
-        # if project.user.pk == request.user.pk:
-        #     return HttpResponseForbidden("Can't delete yourself from project")
-        # return super().get(self.request)
 
     def get_success_url(self):
         return reverse("webapp:project_view", kwargs={"pk": self.object.project.pk})
