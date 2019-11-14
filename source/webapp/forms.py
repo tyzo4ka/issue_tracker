@@ -46,11 +46,8 @@ class SimpleSearchForm(forms.Form):
     search = forms.CharField(max_length=100, required=False, label="Find")
 
 
-class ProjectAddUserForm(forms.ModelForm):
+class TeamForm(forms.ModelForm):
     user = forms.ModelMultipleChoiceField(queryset=User.objects.all(), required=False)
-    # def __init__(self, user, **kwargs):
-    #     super().__init__(**kwargs)
-    #     self.fields['user'].queryset = User.objects.all()
 
     class Meta:
         model = User

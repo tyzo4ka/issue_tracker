@@ -3,10 +3,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
 from accounts.models import Team
-from webapp.forms import ProjectForm, ProjectIssueForm, ProjectAddUserForm, ProjectDeleteUserForm
+from webapp.forms import ProjectForm, ProjectIssueForm, TeamForm
 from webapp.models import Project, User
 from django.db.models import Q
-from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import DetailView, CreateView, UpdateView, DeleteView, ListView
 from django.core.paginator import Paginator
 from django.http import HttpResponseRedirect, HttpResponseForbidden
 from .base import SearchView
@@ -149,3 +149,19 @@ class ProjectDeleteUser(PermissionRequiredMixin, DeleteView):
     def get_success_url(self):
         return reverse("webapp:project_view", kwargs={"pk": self.object.project.pk})
 
+
+class TeamView(ListView):
+    template_name = 'team/team.html'
+    context_object_name = 'teams'
+    model = Team
+
+
+# class TeamCreateView(PermissionRequiredMixin, CreateView):
+#     model = Team
+#     template_name = "team/create_team.html"
+#     form_class = TeamForm
+#     permission_required = 'webapp.add_team'
+#     permission_denied_message = "Access denied"
+#
+#     def get_success_url(self):
+#         return reverse("webapp:project_view", kwargs={"pk": self.object.pk})
