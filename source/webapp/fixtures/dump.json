@@ -9,7 +9,9 @@
     "type": 1,
     "project": 2,
     "created_date": "2019-09-26T06:43:35.582Z",
-    "updated_at": "2019-10-14T11:51:51.954Z"
+    "updated_at": "2019-10-14T11:51:51.954Z",
+    "created_by": 7,
+    "assigned_to": 7
   }
 },
 {
@@ -22,7 +24,9 @@
     "type": 2,
     "project": 1,
     "created_date": "2019-09-26T06:44:07.467Z",
-    "updated_at": "2019-10-14T11:51:51.954Z"
+    "updated_at": "2019-10-14T11:51:51.954Z",
+    "created_by": 7,
+    "assigned_to": 7
   }
 },
 {
@@ -35,7 +39,9 @@
     "type": 2,
     "project": 4,
     "created_date": "2019-09-26T06:45:09.338Z",
-    "updated_at": "2019-10-14T11:51:51.954Z"
+    "updated_at": "2019-10-14T11:51:51.954Z",
+    "created_by": 7,
+    "assigned_to": 7
   }
 },
 {
@@ -48,7 +54,9 @@
     "type": 3,
     "project": 3,
     "created_date": "2019-09-26T06:45:30.924Z",
-    "updated_at": "2019-10-14T11:51:51.954Z"
+    "updated_at": "2019-10-14T11:51:51.954Z",
+    "created_by": 7,
+    "assigned_to": 7
   }
 },
 {
@@ -61,7 +69,9 @@
     "type": 2,
     "project": 2,
     "created_date": "2019-09-26T06:46:06.966Z",
-    "updated_at": "2019-10-14T11:51:51.954Z"
+    "updated_at": "2019-10-14T11:51:51.954Z",
+    "created_by": 7,
+    "assigned_to": 7
   }
 },
 {
@@ -74,7 +84,24 @@
     "type": 1,
     "project": 1,
     "created_date": "2019-09-26T06:46:29.227Z",
-    "updated_at": "2019-10-14T11:51:51.954Z"
+    "updated_at": "2019-10-14T11:51:51.954Z",
+    "created_by": 7,
+    "assigned_to": 7
+  }
+},
+{
+  "model": "webapp.issue",
+  "pk": 7,
+  "fields": {
+    "summary": "Sa in culpa qui officia deserunt",
+    "description": "Santaa in culpa qui officia deseruntSantaa in culpa qui officia deseruntSantaa in culpa qui officia deseruntSantaa in culpa qui officia deseruntSantaa in culpa qui officia deseruntSantaa in culpa qui officia deserunt",
+    "status": 1,
+    "type": 1,
+    "project": 1,
+    "created_date": "2019-11-09T06:06:27.191Z",
+    "updated_at": "2019-11-09T06:06:27.191Z",
+    "created_by": 7,
+    "assigned_to": 7
   }
 },
 {
@@ -127,7 +154,7 @@
     "description": "Nulla rutrum metus vitae lectus maximus, tempor fringilla nulla molestie. Ut mollis sapien mi, ac fermentum nisl tristique nec. Vivamus est nibh, fermentum in sem pellentesque, vestibulum lobortis augue. Nulla sollicitudin iaculis lacus, sed molestie odio rhoncus sollicitudin. Nullam vestibulum felis non est vehicula, at tempor felis scelerisque. Etiam ultricies metus ipsum, et placerat nibh eleifend vitae.",
     "created_date": "2019-10-10T09:38:38.534Z",
     "updated_date": "2019-10-10T09:38:38.534Z",
-    "status": 1
+    "status": "1"
   }
 },
 {
@@ -138,7 +165,7 @@
     "description": "Nam ipsum sapien, rhoncus ut risus nec, tincidunt aliquet enim. Ut volutpat et est et faucibus. Maecenas efficitur nulla eu urna sagittis luctus. Donec justo justo, dictum quis purus fermentum, accumsan rutrum nisi. Vestibulum nec hendrerit quam. Curabitur ultricies nunc arcu, non facilisis diam fermentum at. Ut egestas, sem congue elementum tempor, justo lectus molestie felis, et bibendum mi sem vitae tortor.",
     "created_date": "2019-10-10T09:40:18.869Z",
     "updated_date": "2019-10-10T09:40:18.869Z",
-    "status": 1
+    "status": "1"
   }
 },
 {
@@ -149,7 +176,7 @@
     "description": "Cras quis ultrices eros. Aliquam ac porttitor sapien, et placerat massa. Suspendisse elit nibh, porttitor et placerat sit amet, lobortis eget leo. Duis fringilla nunc et pretium dignissim. In sagittis enim id rhoncus ullamcorper. Sed nunc metus, cursus nec magna id, malesuada lacinia est. Aliquam quis ligula vel metus ornare pretium in at erat.",
     "created_date": "2019-10-10T09:40:42.038Z",
     "updated_date": "2019-10-10T09:40:42.038Z",
-    "status": 1
+    "status": "1"
   }
 },
 {
@@ -160,18 +187,51 @@
     "description": "Donec congue neque purus, vel faucibus ipsum viverra eget. Nullam dolor est, tempor vitae gravida sit amet, mollis cursus augue. Ut luctus hendrerit velit, quis consequat ex maximus id. Aliquam laoreet gravida justo. Cras vel felis quis sapien pulvinar blandit id sed libero. Sed id tempor nulla. Aenean fermentum accumsan euismod. Phasellus ac nibh non nisi lobortis imperdiet nec vel leo. Donec ullamcorper efficitur tellus et egestas. Cras hendrerit sodales purus vel faucibus. Cras fermentum augue ut tempor porttitor. Donec elementum a nibh vitae auctor.",
     "created_date": "2019-10-10T09:41:29.729Z",
     "updated_date": "2019-10-10T09:46:15.112Z",
-    "status": 1
+    "status": "1"
   }
 },
 {
   "model": "webapp.project",
-  "pk": 5,
+  "pk": 7,
   "fields": {
-    "name": "ff",
-    "description": "ff",
-    "created_date": "2019-10-10T11:15:34.222Z",
-    "updated_date": "2019-10-10T11:35:22.566Z",
-    "status": 1
+    "name": "Nullam2",
+    "description": "ffnfjjj jjjjjj jjj jj jj j jj",
+    "created_date": "2019-11-14T05:33:42.296Z",
+    "updated_date": "2019-11-14T07:27:06.423Z",
+    "status": "Active"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 8,
+  "fields": {
+    "name": "Donec2",
+    "description": "jfjjfjjfjfjfjfjj jjjj a'oekej ej jjfjfijifj",
+    "created_date": "2019-11-14T05:41:16.702Z",
+    "updated_date": "2019-11-14T05:41:16.702Z",
+    "status": "Active"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 9,
+  "fields": {
+    "name": "Donec2",
+    "description": "jfjjfjjfjfjfjfjj jjjj a'oekej ej jjfjfijifj",
+    "created_date": "2019-11-14T05:42:50.621Z",
+    "updated_date": "2019-11-14T05:42:50.621Z",
+    "status": "Active"
+  }
+},
+{
+  "model": "webapp.project",
+  "pk": 10,
+  "fields": {
+    "name": "ffff",
+    "description": "fkkkkk",
+    "created_date": "2019-11-14T05:43:35.021Z",
+    "updated_date": "2019-11-14T05:43:35.021Z",
+    "status": "Active"
   }
 },
 {
@@ -186,230 +246,6 @@
   "pk": 2,
   "fields": {
     "name": "finished"
-  }
-},
-{
-  "model": "auth.user",
-  "pk": 2,
-  "fields": {
-    "password": "pbkdf2_sha256$150000$HgmL1BMEl6vl$UyP8Q4oecqIqfzo7r/yqIE32jGQMi9ubyhc/NKm3l2M=",
-    "last_login": "2019-10-26T06:05:00.520Z",
-    "is_superuser": false,
-    "username": "admin_2",
-    "first_name": "",
-    "last_name": "",
-    "email": "",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2019-10-26T06:05:00.353Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "pk": 3,
-  "fields": {
-    "password": "pbkdf2_sha256$150000$AAL79MDKkFC0$XsVUrMhjis68LaMgicPmLKb8E1l0EV9rF974P7Lr0jo=",
-    "last_login": "2019-10-26T06:38:01.006Z",
-    "is_superuser": false,
-    "username": "aa",
-    "first_name": "",
-    "last_name": "",
-    "email": "",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2019-10-26T06:38:00.846Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "pk": 4,
-  "fields": {
-    "password": "pbkdf2_sha256$150000$BRJBryq3EIVg$GBcWZGcU43gaYLpOsC4fw4IpIzuO5/ttTejelRKYtsw=",
-    "last_login": "2019-10-26T06:53:23.270Z",
-    "is_superuser": false,
-    "username": "admin_3",
-    "first_name": "",
-    "last_name": "",
-    "email": "",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2019-10-26T06:53:23.108Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "pk": 5,
-  "fields": {
-    "password": "pbkdf2_sha256$150000$bd35HqcsadUC$weuxmxBoQrP9KNJA+oVPAqVW6Z9pgcvk9UAz8Z1oh/M=",
-    "last_login": "2019-10-31T14:31:48.140Z",
-    "is_superuser": false,
-    "username": "user1",
-    "first_name": "User",
-    "last_name": "User1",
-    "email": "",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2019-10-31T09:01:42Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "pk": 6,
-  "fields": {
-    "password": "pbkdf2_sha256$150000$tqCKfREpKvBh$x3zXHN4ezP75t3Du9gAj+chfdkw0y3HqvOSHF6SgpG4=",
-    "last_login": "2019-10-31T09:54:56.349Z",
-    "is_superuser": true,
-    "username": "adm",
-    "first_name": "a",
-    "last_name": "a",
-    "email": "a@mail.ru",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2019-10-31T09:54:42.782Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "pk": 7,
-  "fields": {
-    "password": "pbkdf2_sha256$150000$Ptp1AXk6UQuy$tBBPucdMWfj3HN6W4QSb7AZqOYmffoRl66kuublNjnw=",
-    "last_login": "2019-11-04T05:15:21Z",
-    "is_superuser": true,
-    "username": "admin",
-    "first_name": "Admin",
-    "last_name": "Adm",
-    "email": "admin@gmail.com",
-    "is_staff": true,
-    "is_active": true,
-    "date_joined": "2019-10-31T09:56:11Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "pk": 8,
-  "fields": {
-    "password": "pbkdf2_sha256$150000$qa9DSMIwp1R7$x1p2bK6sH7o7aC3LM0UTo0D7CkCwfpJdyJVjDTRi0ak=",
-    "last_login": "2019-10-31T14:22:46.757Z",
-    "is_superuser": false,
-    "username": "user2",
-    "first_name": "",
-    "last_name": "",
-    "email": "",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2019-10-31T13:08:33.003Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "pk": 9,
-  "fields": {
-    "password": "pbkdf2_sha256$150000$Fjg50BY0jnaP$/i7w7KpyVABzRQj/eZhNR258b154wusByDaHzv+ar3I=",
-    "last_login": "2019-10-31T14:16:28.070Z",
-    "is_superuser": false,
-    "username": "user3",
-    "first_name": "Aleksandra",
-    "last_name": "",
-    "email": "alex@gmail.com",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2019-10-31T14:16:27.847Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "accounts.profile",
-  "pk": 1,
-  "fields": {
-    "user": 5,
-    "avatar": "",
-    "about": null,
-    "github": null
-  }
-},
-{
-  "model": "accounts.profile",
-  "pk": 2,
-  "fields": {
-    "user": 6,
-    "avatar": "",
-    "about": null,
-    "github": null
-  }
-},
-{
-  "model": "accounts.profile",
-  "pk": 3,
-  "fields": {
-    "user": 7,
-    "avatar": "user_pics/admin_kXyZYHf.jpg",
-    "about": "Admin: do administrative work on the site",
-    "github": "https://github.com/admin"
-  }
-},
-{
-  "model": "accounts.profile",
-  "pk": 4,
-  "fields": {
-    "user": 9,
-    "avatar": "",
-    "about": null,
-    "github": null
-  }
-},
-{
-  "model": "accounts.profile",
-  "pk": 5,
-  "fields": {
-    "user": 2,
-    "avatar": "",
-    "about": null,
-    "github": null
-  }
-},
-{
-  "model": "accounts.profile",
-  "pk": 6,
-  "fields": {
-    "user": 3,
-    "avatar": "",
-    "about": null,
-    "github": null
-  }
-},
-{
-  "model": "accounts.profile",
-  "pk": 7,
-  "fields": {
-    "user": 4,
-    "avatar": "",
-    "about": null,
-    "github": null
-  }
-},
-{
-  "model": "accounts.profile",
-  "pk": 8,
-  "fields": {
-    "user": 8,
-    "avatar": "",
-    "about": null,
-    "github": null
   }
 }
 ]
