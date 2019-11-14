@@ -1,4 +1,6 @@
+from datetime import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
 from accounts.models import Team
 from webapp.forms import ProjectForm, ProjectIssueForm, ProjectAddUserForm, ProjectDeleteUserForm
@@ -53,6 +55,22 @@ class ProjectCreateView(LoginRequiredMixin, CreateView):
     model = Project
     template_name = "project/create_project.html"
     form_class = ProjectForm
+
+    def form_valid(self, form):
+        users = form.cleaned_data.pop('users')
+        self.object = form.save()
+        start_date = datetime.now()
+        pk = self.object.pk
+        for user in users:
+            Team.objects.create(user=user, project=self.object, start_date=start_date)
+        self.add_author_to_project()
+        return redirect('webapp:project_view', pk)
+
+    def add_author_to_project(self):
+        user = self.request.user
+        project = self.object
+        start_date = datetime.now()
+        author = Team.objects.create(user=user, project=project, start_date=start_date)
 
     def get_success_url(self):
         return reverse("webapp:project_view", kwargs={"pk": self.object.pk})

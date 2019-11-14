@@ -62,7 +62,6 @@ class ProjectDeleteUserForm(forms.ModelForm):
 
     def __init__(self, project_pk, **kwargs):
         super().__init__(**kwargs)
-        print(project_pk, "PROJECT PK IN FORMS")
         self.fields['users'].queryset = Team.objects.filter(project=project_pk)
 
     class Meta:
