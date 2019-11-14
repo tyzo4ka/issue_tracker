@@ -82,6 +82,15 @@ class ProjectUpdateView(LoginRequiredMixin, UpdateView):
     template_name = "project/update_project.html"
     context_object_name = "project"
 
+    def form_valid(self, form):
+        users = form.cleaned_data.pop('users')
+        self.object = form.save()
+        start_date = datetime.now()
+        pk = self.object.pk
+        for user in users:
+            Team.objects.create(user=user, project=self.object, start_date=start_date)
+        return redirect('webapp:project_view', pk)
+
     def get_success_url(self):
         return reverse("webapp:project_view", kwargs={"pk": self.object.pk})
 
