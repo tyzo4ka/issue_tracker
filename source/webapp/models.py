@@ -56,7 +56,6 @@ class Project(models.Model):
     updated_date = models.DateTimeField(auto_now=True, verbose_name="Date updated")
     status = models.CharField(max_length=25, verbose_name='Project status', choices=STATUS_CATEGORY, default=STATUS_CHOICE)
 
-
     def __str__(self):
         return self.name
 

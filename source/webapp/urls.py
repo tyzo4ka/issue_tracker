@@ -8,6 +8,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", IndexView.as_view(), name="index"),
     path('issue/<int:pk>/', IssueView.as_view(), name='issue_view'),
+    # path('task/add/<int:pk>/', IssueCreateView.as_view(), name='issue_add'),
+
     path("issue/add/", IssueCreateView.as_view(), name="issue_add"),
     path('issue/<int:pk>/edit/', IssueUpdateView.as_view(), name='issue_update'),
     path("issue/<int:pk>/delete", IssueDeleteView.as_view(), name="issue_delete"),

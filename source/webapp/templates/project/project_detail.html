@@ -6,6 +6,10 @@
     <li><a href="{% url 'webapp:all_projects' %}">All projects</a></li>
     {% if request.user.is_authenticated %}
                 <li><a href="{% url 'webapp:project_add' %}">Add project</a></li>
+        <li><a href="#">Delete Project</a></li>
+       <li><a href="#">??</a></li>
+       <li><a href="#">Add users to project</a></li>
+       <li><a href="#">Delete users to project</a></li>
             {% endif %}
 {% endblock %}
 
@@ -14,8 +18,15 @@
     <p>Created at {{ project.created_date|date:'d.m.Y H:i:s' }}</p>
     <div class="pre">{{ project.description }}</div>
     <p>Status: {{ project.status }}</p>
-
     <br>
+
+    <h3>Users:</h3>
+       {% for team in teams %}
+           <p>{{ team.user.username.capitalize }}, start working on the project {{ team.start_date|date:'d.m.Y H:i:s' }}
+           <a href="#">delete</a></p>
+        {% endfor %}
+    <br>
+
     <h3>Issues:</h3>
     {% if is_paginated %}
         {% include 'partial/pagination.html' %}

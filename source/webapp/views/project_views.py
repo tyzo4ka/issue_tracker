@@ -1,7 +1,8 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse, reverse_lazy
-from webapp.forms import ProjectForm, ProjectIssueForm
-from webapp.models import Project
+from accounts.models import Team
+from webapp.forms import ProjectForm, ProjectIssueForm, ProjectAddUserForm, ProjectDeleteUserForm
+from webapp.models import Project, User
 from django.db.models import Q
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 from django.core.paginator import Paginator
@@ -31,6 +32,11 @@ class ProjectDetailView(DetailView):
         context['form'] = ProjectIssueForm()
         issues = context['project'].issues.order_by("-created_date")
         self.paginate_issues_to_context(issues, context)
+        pk = self.kwargs.get('pk')
+        teams = Team.objects.filter(project_id=pk, end_date=None)
+        context['teams'] = teams
+        users = User.objects.filter(teams__project=self.object)
+        context["users"] = users
         return context
 
     def paginate_issues_to_context(self, issues, context):

@@ -34,7 +34,8 @@ class UserPassesCheck(View):
 
     def check(self, project_pk, user_name):
         project = Project.objects.filter(pk=project_pk)
-        teams = project[0].projects.all()
+        teams = project[0].teams.all()
+        # teams = project[0].projects.all()
         for user in teams:
             return user_name == user.user
 
@@ -43,14 +44,6 @@ class IssueCreateView(UserPassesCheck, CreateView):
     model = Issue
     template_name = "issue/create.html"
     form_class = IssueForm
-
-    # def get_form(self, **kwargs):
-    #     form = super().get_form()
-    #     pk = self.kwargs.get('pk')
-    #     project = Project.objects.get(pk=pk)
-    #     form.fields['project'].initial = project
-    #     form.fields['created_by'].initial = self.request.user
-    #     return form
 
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
