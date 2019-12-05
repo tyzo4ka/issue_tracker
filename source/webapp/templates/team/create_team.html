@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 {% block title %}Create Team{% endblock %}
 {% block content %}
-    <h1>Create Project</h1>
-    <form method="POST" action="{% url "webapp:team_add" %}">
-        {% include 'partial/form.html' with button_text='Create' %}
+    <h1>Create Team</h1>
+    <h1>!!!!! {{ pk }} </h1>
+    <form action="{% url 'webapp:team_add' project.pk %}" method="POST" id="add_user">
+        {% include 'partial/form.html' with button_text='Add' %}
+{#    <form method="POST" action="{% url "webapp:team_add" project.pk %}">#}
+{#        {% include 'partial/form.html' with button_text='Create' %}#}
     </form>
 {% endblock %}

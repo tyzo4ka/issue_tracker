@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from accounts.models import Team
 from webapp.forms import ProjectForm, ProjectIssueForm, TeamForm
@@ -36,7 +36,7 @@ class ProjectDetailView(DetailView):
         self.paginate_issues_to_context(issues, context)
         pk = self.kwargs.get('pk')
         teams = Team.objects.filter(project_id=pk, end_date=None)
-        print(teams)
+        # print(teams)
         context['teams'] = teams
         users = User.objects.filter(teams__project=self.object)
         context["users"] = users
@@ -156,12 +156,32 @@ class TeamView(ListView):
     model = Team
 
 
-# class TeamCreateView(PermissionRequiredMixin, CreateView):
-#     model = Team
-#     template_name = "team/create_team.html"
-#     form_class = TeamForm
-#     permission_required = 'webapp.add_team'
-#     permission_denied_message = "Access denied"
-#
-#     def get_success_url(self):
-#         return reverse("webapp:project_view", kwargs={"pk": self.object.pk})
+class TeamCreateView(PermissionRequiredMixin, CreateView):
+    model = Team
+    template_name = "team/create_team.html"
+    form_class = TeamForm
+    permission_required = 'webapp.add_team'
+    permission_denied_message = "Access denied"
+
+    #
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     pk = self.kwargs.get('pk')
+    #     project_id = Project.objects.filter(project_id=pk)
+    #     context['project_id'] = project_id
+    #     return context
+
+
+    def form_valid(self, form):
+        print("!!!!!!!!!", self.kwargs)
+        pk = self.kwargs.get("pk")
+        print("Project pk", pk)
+        project = get_object_or_404(Project, pk=pk)
+        # project = get_object_or_404(Project, pk=pk)
+        print("Project", project)
+        project.teams.create(**form.cleaned_data)
+        return redirect('webapp:all_teams', pk=pk)
+
+    def get_success_url(self):
+        # return reverse("webapp:all_teams", kwargs={"pk": self.object.pk})
+        return reverse("webapp:all_teams")

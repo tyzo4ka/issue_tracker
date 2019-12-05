@@ -49,18 +49,26 @@ class SimpleSearchForm(forms.Form):
 class TeamForm(forms.ModelForm):
     user = forms.ModelMultipleChoiceField(queryset=User.objects.all(), required=False)
 
+    def __init__(self, **kwargs):
+        # pass
+        # self.projects = kwargs.pop('projects')
+        # print("Self projects", self.projects)
+        super().__init__(**kwargs)
+        # self.fields['project'].queryset = Project.objects.get(project=self.projects)
+
     class Meta:
         model = User
         fields = ['user']
 
 
-class ProjectDeleteUserForm(forms.ModelForm):
-    users = forms.ModelMultipleChoiceField(queryset=User.objects.all(), required=False)
 
-    def __init__(self, project_pk, **kwargs):
-        super().__init__(**kwargs)
-        self.fields['users'].queryset = Team.objects.filter(project=project_pk)
-
-    class Meta:
-        model = User
-        fields = ['users']
+# class ProjectDeleteUserForm(forms.ModelForm):
+#     users = forms.ModelMultipleChoiceField(queryset=User.objects.all(), required=False)
+#
+#     def __init__(self, project_pk, **kwargs):
+#         super().__init__(**kwargs)
+#         self.fields['users'].queryset = Team.objects.filter(project=project_pk)
+#
+#     class Meta:
+#         model = User
+#         fields = ['users']

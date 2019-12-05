@@ -3,7 +3,7 @@
 {% block content %}
     <h1>Teams: </h1>
         {% for team in teams %}
-            <h2>User: {{ team.user}}</h2>
+            <h4>User: {{ team.user}}</h4>
             <p>Project: {{ team.project }}</p>
 {#            {% if request.user.is_authenticated %}#}
 {#                <a href="{% url 'webapp:issue_view' issue.pk %}">More</a>#}
