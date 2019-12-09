@@ -1,64 +1,5 @@
 [
 {
-  "model": "auth.group",
-  "pk": 1,
-  "fields": {
-    "name": "Project Manager",
-    "permissions": [
-      49,
-      50,
-      51,
-      52,
-      33,
-      34,
-      35,
-      36,
-      37,
-      38,
-      39,
-      40
-    ]
-  }
-},
-{
-  "model": "auth.group",
-  "pk": 2,
-  "fields": {
-    "name": "Team Lead",
-    "permissions": [
-      49,
-      50,
-      51,
-      52,
-      33,
-      34,
-      35,
-      36,
-      40,
-      44,
-      28,
-      32
-    ]
-  }
-},
-{
-  "model": "auth.group",
-  "pk": 3,
-  "fields": {
-    "name": "Developer",
-    "permissions": [
-      52,
-      33,
-      34,
-      36,
-      40,
-      44,
-      28,
-      32
-    ]
-  }
-},
-{
   "model": "auth.user",
   "pk": 2,
   "fields": {
@@ -153,7 +94,7 @@
   "pk": 7,
   "fields": {
     "password": "pbkdf2_sha256$150000$Ptp1AXk6UQuy$tBBPucdMWfj3HN6W4QSb7AZqOYmffoRl66kuublNjnw=",
-    "last_login": "2019-11-14T08:55:48.618Z",
+    "last_login": "2019-12-09T11:20:42.910Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "Admin",
@@ -211,7 +152,7 @@
   "pk": 10,
   "fields": {
     "password": "pbkdf2_sha256$150000$Qu1BwRzdzo07$SwaeNl11EmtgT9XFkmCWXYcQoeybglWLDWxJvRo9UUU=",
-    "last_login": "2019-11-14T08:32:27.304Z",
+    "last_login": "2019-11-14T10:59:40.564Z",
     "is_superuser": false,
     "username": "me",
     "first_name": "",
@@ -231,7 +172,7 @@
   "pk": 11,
   "fields": {
     "password": "pbkdf2_sha256$150000$bMkU4uObe5pF$VUg5Lc3CaRqprIb+7Lg+XoJhbGa+NsdGtYbN7bzDUIs=",
-    "last_login": "2019-11-14T08:56:46.190Z",
+    "last_login": "2019-11-14T10:03:21.146Z",
     "is_superuser": false,
     "username": "Ev",
     "first_name": "",
@@ -243,6 +184,24 @@
     "groups": [
       1
     ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 12,
+  "fields": {
+    "password": "pbkdf2_sha256$150000$gBdtqzy6We6n$tWYI5Sg7WO4VqoRL4N5rwexSJQfo4XXHGfqin8kGpb8=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "userregister",
+    "first_name": "",
+    "last_name": "",
+    "email": "userregister@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2019-12-09T06:15:20.267Z",
+    "groups": [],
     "user_permissions": []
   }
 }
