@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 
 from webapp.models import Project, Issue
 from api.serializers import ProjectSerializer, IssueSerializer, RegistrationSerializer
-from rest_framework.permissions import DjangoModelPermissions, AllowAny
+from rest_framework.permissions import DjangoModelPermissions, AllowAny, DjangoModelPermissionsOrAnonReadOnly
 
 
 class RegistrationView(APIView):
@@ -22,12 +22,12 @@ class RegistrationView(APIView):
 
 
 class ProjectViewSet(viewsets.ModelViewSet):
-    permission_classes = [DjangoModelPermissions]
+    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
     queryset = Project.objects.all()
     serializer_class = ProjectSerializer
 
 
 class IssueViewSet(viewsets.ModelViewSet):
-    permission_classes = [DjangoModelPermissions]
+    permission_classes = [DjangoModelPermissionsOrAnonReadOnly]
     queryset = Issue.objects.all()
     serializer_class = IssueSerializer
