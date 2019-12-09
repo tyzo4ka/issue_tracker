@@ -63,3 +63,9 @@ function deleteIssue(){
         error: function(response, status) {console.log(response);}
     });
 }
+
+getAllProjects();
+getAllIssues();
+getProjectIssues();
+createIssue();
+deleteIssue();
